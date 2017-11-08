@@ -11,12 +11,21 @@ for file in *; do
       rm "$dest"
     fi
 
-    ln -s $file $HOME/.$file
+    ln -s dotfiles/$file "$dest"
   fi
 done
 
 cd config
 for file in *; do
-  ln -s $file $HOME/.config/$file
+  dest="$HOME/.config/$file"
+  if  [ -f  $dest ] || [ -d $dest ]; then
+    mv "$dest" "$dest.bak"
+  fi
+
+  if [ -L "$dest" ]; then
+    rm "$dest"
+  fi
+
+  ln -s ../dotfiles/config/$file "$dest"
 done
 
