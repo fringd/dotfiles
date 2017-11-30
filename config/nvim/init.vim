@@ -8,6 +8,7 @@ Plug 'w0rp/ale'
 Plug 'benjie/neomake-local-eslint.vim'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'othree/eregex.vim'
 
 "color schemes
 Plug 'tomasr/molokai'
