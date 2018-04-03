@@ -2,8 +2,14 @@ escape ^@a
 
 maptimeout 10
 
+# 256 color
 term screen-256color
 attrcolor b ".I"
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E38;5;%dm'
 defbce "on"
+
 defscrollback 1000000
+
+# 2 line status
+hardstatus alwayslastline
+hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%m/%d %{W}%C%A%{g}]'
