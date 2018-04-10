@@ -11,6 +11,7 @@ Plug 'jeetsukumaran/vim-buffergator'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'othree/eregex.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'ervandew/supertab'
 
 "color schemes
 Plug 'tomasr/molokai'
@@ -20,6 +21,11 @@ Plug 'beigebrucewayne/Turtles'
 Plug 'Zabanaa/neuromancer.vim'
 Plug 'hzchirs/vim-material'
 Plug 'iKarith/tigrana'
+
+"typescript
+Plug 'leafgarland/typescript-vim'
+Plug 'Shougo/vimproc.vim'
+Plug 'Quramy/tsuquyomi'
 call plug#end()
 
 set tabstop=2
@@ -58,6 +64,7 @@ let g:rehash256 = 1
 " Ale Settings
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'typscript': ['tsserver'],
 \}
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
@@ -76,4 +83,29 @@ let g:neomake_javascript_eslint_maker = {
 \ 'args': ['--no-color', '--format', 'compact'],
 \ 'errorformat': '%f: line %l\, col %c\, %m'
 \ }
+
+
+"typescript
+let g:typescript_compiler_binary = 'tsc'
+let g:typescript_compiler_options = ''
+autocmd FileType typescript :set makeprg=tsc
+autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
+set omnifunc=syntaxcomplete#Complete
+autocmd FileType typescript set omnifunc=tsuquyomi#complete
+autocmd Filetype typescript TsuReload
+
+" supertab (completefunc) + latex-box (omnifunc)
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-p>"
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextDiscoverDiscovery = ["&omnifunc:<c-x><c-o>"]
+" Problem with load order (vimrc is evaluated before latex-box setting of omnifunc)
+" \ verbose set omnifunc? | " is empty
+" added this autocommand to after/ftplugin/tex.vim
+" :do FileType solves also the problem
+autocmd FileType * 
+      \ if &omnifunc != '' |
+      \ call SuperTabChain(&omnifunc, "<c-p>") |
+      \ call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+      \ endif
 
