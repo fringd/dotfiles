@@ -1,12 +1,15 @@
 call plug#begin('~/.config/nvim/plugged')
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'Shougo/deoplete.nvim',  { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/denite.nvim'
+Plug 'vim-syntastic/syntastic'
+
 "nerf neomake, using ale
-"Plug 'neomake/neomake'
 Plug 'scrooloose/nerdTree'
 Plug 'junegunn/fzf'
 Plug 'w0rp/ale'
-Plug 'benjie/neomake-local-eslint.vim'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'othree/eregex.vim'
@@ -23,9 +26,18 @@ Plug 'hzchirs/vim-material'
 Plug 'iKarith/tigrana'
 
 "typescript
-Plug 'leafgarland/typescript-vim'
-Plug 'Shougo/vimproc.vim'
-Plug 'Quramy/tsuquyomi'
+Plug 'mhartington/nvim-typescript'
+"Plug 'Quramy/tsuquyomi'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'Shougo/vimproc.vim'
+
+"ejs
+Plug 'briancollins/vim-jst'
+
+
+
+"coffeescript
+Plug 'kchmck/vim-coffee-script'
 call plug#end()
 
 set tabstop=2
@@ -43,6 +55,9 @@ cnoremap        <C-A> <Home>
 cnoremap        <C-B> <Left>
 cnoremap <expr> <C-D> getcmdpos()>strlen(getcmdline())?"\<Lt>C-D>":"\<Lt>Del>"
 cnoremap <expr> <C-F> getcmdpos()>strlen(getcmdline())?&cedit:"\<Lt>Right>"
+
+" python
+let g:python3_host_prog = '/Users/rdobson/.pyenv/shims/python3'
 
 " kill and yank
 cnoremap <C-k> <C-\>esetreg('k', strpart(getcmdline(), getcmdpos() - 1)) ? getcmdlind() : strpart(getcmdline(),0,getcmdpos()-1)<CR>
@@ -64,35 +79,42 @@ let g:rehash256 = 1
 " Ale Settings
 let g:ale_linters = {
 \   'javascript': ['eslint'],
-\   'typscript': ['tsserver'],
+\   'typescript': ['eslint'],
 \}
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '!!'
 let g:ale_sign_warning = '>>'
 
-" Neomake Settings
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_jsx_enabled_makers = ['eslint']
-let g:neomake_jsx_eslint_maker = {
-      \ 'exe': '/Users/jcharry/repos/squarespace-v6/site-server/node_modules/.bin/eslint',
-\ 'args': ['--no-color', '--format', 'compact'],
-\ 'errorformat': '%f: line %l\, col %c\, %m'
-\ }
-let g:neomake_javascript_eslint_maker = {
-\ 'args': ['--no-color', '--format', 'compact'],
-\ 'errorformat': '%f: line %l\, col %c\, %m'
-\ }
+" syntastic
 
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
 "typescript
-let g:typescript_compiler_binary = 'tsc'
-let g:typescript_compiler_options = ''
-autocmd FileType typescript :set makeprg=tsc
-autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
-set omnifunc=syntaxcomplete#Complete
-autocmd FileType typescript set omnifunc=tsuquyomi#complete
-autocmd Filetype typescript TsuReload
+"let g:typescript_compiler_binary = 'tsc'
+"let g:typescript_compiler_options = ''
+"autocmd FileType typescript :set makeprg=tsc
+"autocmd FileType typescript nmap <buffer> <Leader>T : <C-u>echo tsuquyomi#hint()<CR>
+"set omnifunc=syntaxcomplete#Complete
+"autocmd FileType typescript set omnifunc=tsuquyomi#complete
+"
+
+"typescript2
+let g:deoplete#enable_at_startup = 1
+augroup FiletypeGroup
+  autocmd!
+  " .ts is a Typescript file
+  au BufNewFile,BufRead *.ts set filetype=typescript
+augroup END
+
 
 " supertab (completefunc) + latex-box (omnifunc)
 let g:SuperTabDefaultCompletionType = "context"

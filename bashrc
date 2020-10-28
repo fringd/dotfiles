@@ -35,3 +35,16 @@ function _update_ps1() {
 if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
+
+# save python virtualenvs here
+export WORKON_HOME=~/.virtualenvs
+ 
+# activate virtualenvwrapper shell functions
+source /usr/local/bin/virtualenvwrapper.sh
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
