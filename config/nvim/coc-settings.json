@@ -1,0 +1,11 @@
+{
+  "diagnostic.errorSign": "✖",
+  "diagnostic.warningSign": "⚑",
+  "diagnostic.infoSign": "⚑",
+  "diagnostic.hintSign": "⚑",
+  "suggest.noselect": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+  ],
+  "tsserver.formatOnType": false
+}
+

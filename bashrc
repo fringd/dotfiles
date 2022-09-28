@@ -28,13 +28,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export FZF_DEFAULT_COMMAND='fd --type f'
 . $HOME/.sqsp-secrets
 
-function _update_ps1() {
-  PS1=$(powerline-shell $?)
-}
-
-if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
-  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
 
 # save python virtualenvs here
 export WORKON_HOME=~/.virtualenvs

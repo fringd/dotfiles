@@ -20,3 +20,5 @@ alias drone='/usr/local/bin/drone'
 alias killwarden='kubectl -n rdobson get pods | grep warden | awk '"'"'{print $1}'"'"' | xargs kubectl -n rdobson delete pod'
 alias fixup="git commit -m 'chore(fixup): fixup'"
 alias g='yarn exec febs g'
+alias ack='ag'
+alias ss='cd $HOME/code/squarespace-v6/site-server/'
