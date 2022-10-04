@@ -6,6 +6,18 @@
   "suggest.noselect": true,
   "coc.preferences.formatOnSaveFiletypes": [
   ],
-  "tsserver.formatOnType": false
+  "tsserver.formatOnType": false,
+  "languageserver": {
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    }
+  }
 }
 

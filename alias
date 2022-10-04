@@ -22,3 +22,5 @@ alias fixup="git commit -m 'chore(fixup): fixup'"
 alias g='yarn exec febs g'
 alias ack='ag'
 alias ss='cd $HOME/code/squarespace-v6/site-server/'
+alias gfl='git log --oneline'
+alias gfh='git log --oneline -n 20'
