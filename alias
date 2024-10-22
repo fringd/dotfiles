@@ -3,9 +3,6 @@ alias rungradle-rollups='./gradlew run -DUseMemcached=true'
 alias rungradle-i18n='./gradlew run -DUseMemcached=true -Pi18n=true -ProllupsReady'
 alias status='git status'
 
-alias gfh="git log --oneline -n 10 --topo-order --graph --color \
-  --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' \
-  | prettier | trim-to-terminal-width"
 alias gfd="git log --oneline  --topo-order --graph --color \
   --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' origin/master.. \
   | prettier | trim-to-terminal-width"
@@ -15,7 +12,7 @@ alias vim='nvim'
 alias vi='nvim'
 alias cdsrc='cd site-server/src/main/webapp/universal/src/'
 alias vimrc='nvim ~/.config/nvim/init.vim'
-alias un='cd /Users/rdobson/code/squarespace-v6/site-server/src/main/webapp/universal'
+alias un='cd /Users/rdobson/code/config-frontend/site-server/src/main/webapp/universal'
 alias drone='/usr/local/bin/drone'
 alias killwarden='kubectl -n rdobson get pods | grep warden | awk '"'"'{print $1}'"'"' | xargs kubectl -n rdobson delete pod'
 alias fixup="git commit -m 'chore(fixup): fixup'"

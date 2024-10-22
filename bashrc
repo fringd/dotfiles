@@ -41,3 +41,4 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+. ./.xraycredentials
