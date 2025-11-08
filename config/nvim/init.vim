@@ -34,6 +34,9 @@ Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'jparise/vim-graphql'        " GraphQL syntax
+Plug 'bakudankun/pico-8.vim'
+Plug 'markbahnman/vim-pico8-color'
+Plug 'scottmckendry/cyberdream.nvim'
 
 
 "typescript
@@ -48,7 +51,6 @@ let g:coc_global_extensions = [
 if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
   let g:coc_global_extensions += ['coc-eslint']
 endif
-
 
 "ejs
 Plug 'briancollins/vim-jst'
@@ -90,8 +92,11 @@ noremap <C-]> :FZF<CR>
 set t_Co=256
 syntax enable
 set background=dark
-colorscheme tigrana-256-dark
+"colorscheme pico8
+
+"colorscheme tigrana-256-dark
 "colorscheme turtles
+colorscheme cyberdream 
 
 let g:rehash256 = 1
 
@@ -298,4 +303,5 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-
+autocmd FileType pico8 setlocal shiftwidth=1 tabstop=1 expandtab
+set mouse=

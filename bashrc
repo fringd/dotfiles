@@ -8,13 +8,6 @@ export PATH=$HOME/bin:$PATH
 
 . $HOME/.alias
 
-#git autocompletion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-
-  __git_complete gco _git_checkout
-  __git_complete gb _git_branch
-fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -41,6 +34,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
-. ~/.alias
+. $HOME/.alias
+# git completion
+. $HOME/.git-completion.bash
 __git_complete gco _git_checkout
-
+__git_complete gb _git_branch
