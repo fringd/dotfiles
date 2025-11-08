@@ -1,0 +1,18 @@
+[user]
+	email = rdobson@squarespace.com
+	name = Ram Dobson
+
+[core]
+  editor = nvim
+[push]
+	default = current
+	autoSetupRemote = true
+[merge]
+	conflictstyle = diff3
+[color "diff"]
+	oldMoved = magenta
+	newMoved = cyan
+[pull]
+	ff = only
+[init]
+	defaultBranch = main

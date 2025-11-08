@@ -39,3 +39,4 @@ export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 . $HOME/.git-completion.bash
 __git_complete gco _git_checkout
 __git_complete gb _git_branch
+. ./.xraycredentials
